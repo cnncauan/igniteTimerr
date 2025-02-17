@@ -3,6 +3,7 @@ import ReactDom from "react-dom/client";
 import { Button } from "./components/Button";
 import { ThemeProvider } from "styled-components";
 import { defaultThemes } from "./themes/default";
+import { GlobalStyle } from "./styles/globol";
 
 ReactDom.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -12,6 +13,8 @@ ReactDom.createRoot(document.getElementById("root")!).render(
       <Button variant="danger" />
       <Button variant="success" />
       <Button />
+
+      <GlobalStyle />
     </ThemeProvider>
   </React.StrictMode>
 );
