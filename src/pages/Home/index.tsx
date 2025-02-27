@@ -22,12 +22,21 @@ const newCycleFormValidationSchema = zod.object({
     .max(60, "o ciclo precisa de ser no máximo 60min"),
 });
 
+// interface NewCycleFormData {
+//   task: string;
+//   minuteAmount: number;
+// }
+
 export function Home() {
   const { register, handleSubmit, watch } = useForm({
     resolver: zodResolver(newCycleFormValidationSchema),
+    defaultValues: {
+      minuteAmout: 0,
+      task: "",
+    },
   });
 
-  function handleCreateNewSubmit(data: any) {
+  function handleCreateNewSubmit(data: NewCycleFormData) {
     console.log(data);
   }
 
@@ -67,7 +76,7 @@ export function Home() {
         </FormConteiner>
 
         <CountdownContainer>
-          <span>0</span>
+          <span>θ</span>
           <span>0</span>
           <Separator>:</Separator>
           <span>0</span>
