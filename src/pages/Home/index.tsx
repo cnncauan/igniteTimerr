@@ -27,8 +27,10 @@ const newCycleFormValidationSchema = zod.object({
 //   minuteAmount: number;
 // }
 
+type NewCycleFormData = zod.infer<typeof newCycleFormValidationSchema>;
+
 export function Home() {
-  const { register, handleSubmit, watch } = useForm({
+  const { register, handleSubmit, watch, reset } = useForm({
     resolver: zodResolver(newCycleFormValidationSchema),
     defaultValues: {
       minuteAmout: 0,
@@ -38,6 +40,7 @@ export function Home() {
 
   function handleCreateNewSubmit(data: NewCycleFormData) {
     console.log(data);
+    reset();
   }
 
   const task = watch("task");
@@ -77,10 +80,10 @@ export function Home() {
 
         <CountdownContainer>
           <span>θ</span>
-          <span>0</span>
+          <span>θ</span>
           <Separator>:</Separator>
-          <span>0</span>
-          <span>0</span>
+          <span>θ</span>
+          <span>θ</span>
         </CountdownContainer>
 
         <StartCountDownButton disabled={isSubmitDisabled} type="submit">
